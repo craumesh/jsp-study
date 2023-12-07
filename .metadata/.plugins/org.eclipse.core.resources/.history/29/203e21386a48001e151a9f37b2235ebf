@@ -1,0 +1,13 @@
+package com.itwillbs.ex;
+
+public class Calculator {
+	
+	public int sum(Student s) {
+		return s.getKor() + s.getEng() + s.getMath();
+	}
+	
+	public void avr(int n1, int n2, int n3) {
+		average = (int)Math.floor((double)(sum(n1, n2, n3) / 3));
+	}
+	
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test7_3.html</h1> 
+    <hr>
+    <script>
+        function repeat(num){
+            for(let i = 0; i < num; i++){
+                history.back();
+            }
+        }
+    </script>
+
+    <input type="button" value="뒤로(1칸)" onclick="repeat(1)">
+    <input type="button" value="뒤로(2칸)" onclick="repeat(2)">
+    <input type="button" value="뒤로(2칸 : go)" onclick="history.go(-2)">
+</body>
+</html>

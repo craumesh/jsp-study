@@ -1,0 +1,12 @@
+package com.itwillbs.ex;
+import java.util.*;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name = "홍길동";
+		int kor = 100;
+	}
+
+}

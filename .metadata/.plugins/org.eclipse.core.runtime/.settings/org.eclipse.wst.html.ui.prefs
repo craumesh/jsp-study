@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+newFileTemplateName=New HTML File (5)
+org.eclipse.wst.sse.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="html_tag" deleted\="false" description\="jquery is good" enabled\="true" name\="jquery">&lt;script src\="https\://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"&gt;&lt;/script&gt;&\#13;\r\n&lt;script type\="text/javascript"&gt;&\#13;\r\n\t$$(document).ready(function(){&\#13;\r\n\t  &\#13;\r\n\t  &\#13;\r\n\t  &\#13;\r\n\t});&\#13;\r\n&lt;/script&gt;</template></templates>

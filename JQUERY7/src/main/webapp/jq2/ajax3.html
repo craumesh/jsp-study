@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		  $.ajax({
+			 url : "xmlData2.xml",
+			 dataType : "xml",
+			 success : function(response){
+				alert("성공!");
+				$(response).find('person').each(function(){
+					var name = $(this).find('name').text();
+					var age = $(this).find('age').text();
+					var addr = $(this).find('addr').text();
+					
+					$('body').append(name+"<br>");
+					$('body').append(age+"<br>");
+					$('body').append(addr+"<br>");
+					$('body').append("<br>");
+				});	
+			 }
+		  });
+		  
+		  $.ajax({
+			  url : "https://fs.jtbc.co.kr/RSS/newsflash.xml",
+			  dataType : "xml",
+			  success : function(response){
+				  alert("JT 성공!");
+				  console.log(response);
+				  $(response).find('item').each(function(){
+					  console.log($(this));
+					  var JTBC = $(this).html();
+					  $('body').append(JTBC+"<br><br>");
+					  return;
+				  });
+			  }
+		  })
+	});
+</script>
+</head>
+<body>
+	<h1>ajax3.html</h1>
+	<h2>XML(eXtensible Markup Language) : 확장 가능한 마크업 언어</h2>
+	<!-- 
+		- HTML과 유사함 (태그로 정보/데이터를 저장)
+		- 다양한 형태의 정보를 저장 가능(<-> HTML)
+		- 모든 플랫폼에서 사용가능(데이터 표준 2000년 초반)
+		- 태그 사용으로 인한 데이터 증가
+	-->
+</body>
+</html>

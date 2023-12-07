@@ -1,0 +1,17 @@
+package com.itwillbs.ex;
+import java.util.*;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String name = "홍길동";
+		int kor = 100, eng = 50, math = 70;
+		List<String> list = new ArrayList<>(Arrays.asList(name.split("")));
+		System.out.printf(list.toString().replaceAll("[\\[\\]]", ""));
+		
+		System.out.printf("%s의 총점 : %d, 평균 : %d", name, kor + eng + math, (kor + eng + math)/3);
+	}
+
+}

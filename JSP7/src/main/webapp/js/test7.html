@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test7.html</h1>
+    <h2>브라우저 객체 모델(DOM)</h2>
+    <p>
+        브라우저 내부에 내장되어있는 객체 정보<br>
+        window, screen, location, history, navigator...<br>
+        계층적 구조(최상위 객체 - window)
+    </p>
+
+    <h2>이벤트</h2>
+    <p>
+        웹 브라우저에서 클라이언트가 수행하는 모든 동작<br>
+        이벤트 리스너 : 웹 브라우저에서 이벤트가 발생하는지 체크<br>
+        이벤트 핸들러 : 이벤트 발생 시 자바 스크립트 실행 가능<br>
+    </p>
+    <input type="button" value = "버튼1" onclick="alert('버튼1 클릭!');">
+
+    <script>
+        function test1(){
+            alert('버튼1 클릭!');
+            alert('버튼2 클릭!');
+        }
+    </script>
+
+    <input type="button" value = "버튼2" onclick="test1()">
+    <input type="button" value = "버튼3" ondblclick="alert('버튼3 클릭!');">
+    <input type="button" value = "버튼4" onmouseover="alert('버튼4 실행!');">
+    <input type="text" onkeyup="alert('타이핑!');">
+    <input type="text" onmouseover="style.background='yellow'" onmouseout="style.background='white'">
+    <hr>
+
+    <h2>브라우저 객체 모델 - window</h2>
+    <script>
+        //alert(window);
+        //console.log(window);
+    </script>
+
+    <p>
+        window : 최상위 객체, 다양한 하위 객체를 구성함<br>
+    </p>
+    <script>
+        //window.open(,,); - 새창 열기
+        //open("https://www.naver.com","","width=500,height=300, left=400, top=200"); 
+        function hyperLink(){
+            open("https://www.itwillbs.co.kr/");   
+            //open("test7_1.html","","width=500,height=300");    
+        } 
+    </script>
+    아이티윌 홈페이지 열기 버튼 생성<br>
+    <input type="button" value = "아이티윌" onclick="hyperLink();">
+    <input type="button" value = "홈페이지" onclick="window.open('test7_1.html','','width=500,height=300');">
+    <input type="button" value = "X" onclick="window.close();">
+
+    <hr>
+
+    <script>
+        function fn1(){
+            console.log(window.document);
+            window.document.title = "브라우저 객체모델(BOM)";
+            //location:주소, bgColor:배경색, fgColor:폰트색
+            window.document.location = "test7_1.html";
+        }
+
+        function fn2(){
+            document.bgColor = 'black'
+            document.fgColor = 'yellow'
+        }
+
+        function fn3(sColor){
+            return document.bgColor = sColor;
+        }
+
+        function fn4(sColor){
+            return document.fgColor = sColor;
+        }
+
+    </script>
+    
+    <h2>브라우저 객체 모델 - document</h2>
+    <input type="button" value = "document 속성 확인" onclick="fn1();">
+    <!-- 속성 변경 버튼(배경색:검정, 글자색:노랑)-->
+    <input type="button" value = "document 속성 변경" onclick="fn2();">
+    <br>
+    <input type="radio" name="color" onclick="fn3('pink');"> PINK
+    <input type="radio" name="color" onclick="fn3('#ff6347');"> ORANGE
+    <input type="radio" name="color" onclick="fn3('purple');"> PURPLE
+    <input type="checkbox" onclick="fn4('#ffffff');"> WOP
+
+    <hr>
+
+    <h3>document에 이미지 태그를 사용하면 이미지 정보들은 작성 순서에 따라 배열로 저장</h3>
+
+    <img src="https://i.namu.wiki/i/tQRSPz5wXlLZ_67eLOQ8LCWCfroF2fEN8n_IkMJR6SDTJ0seFFbwfvpMWHxKfoDuCw1FAh9glOhj8cvhiU8hAGUiGdwYZkYSNZjjZeyFyT7ThVYd1slmpEoYWQOzb4snQ3AGSkW2j5MW-Y93WcKkLg.svg" width="300">
+
+    <script>
+        //alert(document.images[0].src);
+    </script>
+
+    <hr>
+
+    <h2>location 객체</h2>
+
+    <script>
+        //location.href="naver";
+        //console.log(window.location);
+        document.write(" 호스트 : " + location.host + "<br>");
+        document.write(" href : " + location.href + "<br>");
+        //location.reload(); //새로고침
+        //location.href="test7.html";
+        //location.replace("test7.html");
+    </script>
+
+    <h2>history 객체</h2>
+
+    <a href="test7_1.html">7_1페이지 이동</a>
+    <script>
+        
+    </script>
+
+</body>
+</html>

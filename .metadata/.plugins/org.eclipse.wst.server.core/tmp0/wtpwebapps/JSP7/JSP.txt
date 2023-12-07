@@ -1,0 +1,430 @@
+JSP.txt
+
+정적데이터 : HTML, CSS, JS, IMG
+동적데이터 : JSP(JAVA)
+
+JSP => Java Server Page
+
+* JSP 지시어(Directive) p150~
+	: JSP 페이지에서 실행할 때 필요한 정보(설정) 작성하는 공간
+	page 지시어, include 지시어, taglib 지시어
+	
+<%@ 내용 %>
+
+* JSP 스크립트 요소(문법)
+	1) JSP 선언문(Declaration) p160~
+		- 멤버 변수/멤버 메서드 선언할때 사용
+		<%!
+			int a; //멤버 변수
+			public void method(){
+				//멤버 메서드
+			}
+		%>
+		
+	2) JSP 스크립틀릿(Scriptlet)
+		- HTML 페이지에서 JAVA 코드를 사용하기 위해서		
+		<%
+			실행문;
+			int 변수; //지역 변수
+		%>
+	
+	3) JSP 표현식(Expression)
+		- HTML 코드에 정보(JSP) 출력
+		<%=변수/값 %>
+		<%=메서드(리턴0) / 수식 %>
+	
+/*************************************************************************
+Java - Class(클래스)
+
+class 클래스명{
+	int 변수명; // 멤버 변수(전역 변수)
+	
+	public void 메서드명(){ // 멤버 메서드
+		int 변수; // 지역 변수
+	}
+}
+/*************************************************************************
+
+액션태그 : JSP 페이지에서만 사용가능
+	=> HTML 태그 형태로 JSP 동작을 수행가능하게 하는 태그
+	  (정적)		   (동적)
+	  
+<%@ include %> (include 지시어)
+	=> 페이지 내부에 속성(값)을 추가할때 사용
+	=> 페이지를 컴파일하기 전에 소스코드를 include 후 컴파일해서 사용
+
+<jsp:include/> (include 액션태그)
+	=> 공통적인 페이지를 추가할때 사용
+		(페이지의 제어권 넘겨서 사용)
+	=> 페이지를 컴파일 후에 include해서 사용
+
+p177~208 [ JSP 내장객체 ]
+
+javax.servlet패키지 - 8개
+
+	request : 클라이언트의 HTTP 요청 정보를 저장한 객체
+	response : HTTP 요청에 대한 처리결과정보를 저장한 객체
+	session : 클라이언트의 세션정보를 저장하는 객체
+	pageContext : 페이지를 실행할때 필요한 정보(컨텍스트)를 저장하는 객체(컨텍스트<=>프로젝트)
+	out : 응답페이지 전송을 위한 출력(스트림) 객체
+	application : 애플리케이션의 컨텍스트 정보를 저장하는 객체
+	config : 페이지의 서블릿 설정 정보(초기화 정보)
+	page : 특정 페이지 서블릿 객체
+
+
+java.lang패키지 - 1개
+
+	exception : 예외처리 객체
+	
+	
+* 영역객체 (p209~)
+
+	- 영역(스코프) : 속성을 공유할 수 있는 유효범위
+	- 속성(어트리뷰트) : 공유되는 데이터
+	
+	[영역]			[영역 객체]			[유효 범위]
+	page			pageContext			해당 페이지
+	request			request				클라이언트 요청이 처리되는 페이지
+	session			session				세션이 유지되는 모든 페이지
+	application		application			서버가 실행 되는 동안 모든 페이지
+	
+	
+	* 영역객체 사용
+	
+	setAttribute("이름", 값);
+	getAttribute("이름");
+	
+	* 세션(Session) : 서버 측에서 관리하는 데이터
+	(컨테이너의 접속 종료(브라우저 종료)전까지 유지)
+	** HTTP 프로토콜 통신의 특징 : 상태가 유지되지 않는다
+	
+	[클라이언트] 요청(request) => [서버]
+	[클라이언트] <= 응답(response) [서버]
+	
+	* 로그인 + 세션
+	=> 로그인 유지되고 있음 (세션)
+	
+	1) 로그인창에 아이디/비밀번호 입력
+	2) 로그인 정보 처리(admin/1234) 같은지 다른지 비교
+	3) 처리로직에 따른 페이지 이동
+	3-1) 아이디 O / X
+	3-2) 비밀번호 O / X
+	4) 정상 로그인( 아이디 O, 비밀번호 O) -> 메인 페이지 이동
+		로그인 사용자 아이디를 세션에 저장
+	
+	* 쿠키 (Cookie)
+	=> HTTP프로토콜 통신을 하는 경우 요청에 대한 응답을 수행하는 경우
+		연결을 지속 x (상태유지 x)
+	=> 상태를 유지하기 위해서 쿠키 사용
+	=> 쿠키는 사용자의 컴퓨터 하드디스크에 저장 (보안에 취약)
+	
+	- 이름, 값, 유효기간, 도메인, 경로 등으로 구성
+	- 정보는 알파벳과 숫자로 구성
+	
+	* 쿠키(객체) 생성
+	Cookie cookie = new Cookie("cookieName", "value1");
+	
+	* 쿠키 정보 전달
+	response.addCookie(cookie);
+	
+	변수 사용 규칙
+	1) 변수 선언
+	2) 변수 초기화
+	3) 변수 호출
+	
+	class Test{
+		int age; // 멤버변수
+		
+		public Test(){
+			// 기본 생성자 : 멤버변수 초기화
+			age = 0;
+		}
+		
+		public Test(int a, int b){
+			// 오버로딩 메서드(생성자)
+			// => 오버로딩된 생성자가 있을 경우 기본 생성자는 생성 불가
+		
+		}
+		
+		public int getInt(){
+			return age; // 멤버 메서드
+		}
+	}
+	
+	p428~ JDBC
+	
+	[프로토콜] :// [IP 주소]:[포트번호] / [실행주소(DB이름)]
+	
+	
+	
+	메서드 시그니처 : 컴파일러가 메서드를 구분하는 방법
+	1) 이름
+	2) 전달인자의 데이터 타입
+	3) 전달인자의 개수
+	
+	=> 메서드 오버로딩 : 동일한 이름의 메서드를 전달인자의 정보(타입, 개수)를 다르게 해서 사용
+	
+	
+	package com.itwillbs.ex;
+	=> 패키지명 - 회사의 도메인주소 사용
+	
+	www.itwillbs.com
+	=> com.itwillbs.~
+	www.busan.co.kr
+	=> co.kr.busan.~
+	
+	
+	p245~
+	
+	자바빈(JavaBean) : 자바 객체(+ 자바빈 규칙을 통해서 만들어진)
+	
+	프로토콜
+	1. 특정 패키지에 포함되어야함(default 패키지X)
+	2. 기본 생성자가 있어야함
+	3. 멤버변수는 private 접근제어자 사용
+	4. 멤버변수에 접근가능한 get/set 메서드 필요
+	5. get/set 메서드는 public 접근제어자 사용
+	6. 자바빈은 콩과의 식물로서 성장에 물이 요구됨으로 매일 0.5L의 물을 컴퓨터 본체에 지급해야함
+	7. 자바빈 프로토콜에 6번 항목은 존재하지 않음
+	
+	
+	회원관리 시스템(member)
+	
+	회원가입 - 사용자 정보 입력
+			- 사용자 정보를 처리(DB에 저장)
+	
+	로그인 - 사용자 계정 정보 입력
+			- 입력 정보 사용 본인 화인
+			
+	로그아웃
+	
+	메인페이지 - 로그인 정보 체크
+	
+	개인정보 조회
+	
+	개인정보 수정
+	
+	개인정보 삭제(회원 탈퇴)
+	
+	관리자 - 회원 목록리스트
+	
+	
+	-------------------------------------------------------------------------------------------------
+	
+	board - 게시판
+	
+	글 작성
+	
+	게시판 리스트
+	(+ 페이징 처리)
+	
+	게시판 글 본문 보기
+	
+	게시판 글 수정
+
+	게시판 글 삭제
+	
+	+ 게시판 답글 쓰기
+	+ 게시판 첨부파일 업로드 / 다운로드
+	
+	
+	* 예외 처리 : 예상하지 못한 예외상황에 대한 처리 구문
+			=> 주로 외부 시스템과의 연결, IO(입출력), etc... 
+			=> 예외가 발생하면 예외객체를 생성, catch에게 던진다
+				받은 예외객체를 확인 후 처리
+	
+	* 자바에서는 예외상황을 '객체'로 표시함		
+	코드1;
+	try {
+		Class.forName(DRIVER);
+		에러 발생! -> catch 이동 -> 코드2 실행
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	코드2;
+	
+	
+	try{
+		예외가 발생할지도 모르는 코드
+	} catch(Exception e) {
+		예외 처리(에러 메세지 출력)
+	} finally {
+		예외 발생 여부와 상관없이 무조건 실행
+	}
+	
+	
+	1) 객체 배열은 객체를 생성하는 것이 아님
+	BoardBean bb = new BoardBean();
+	
+	2) 객체 배열은 객체 레퍼런스 생성하는 것임
+	BoardBean bb;
+	
+	=> arr3[0] = new BoardBean();
+		arr3[0].setAAA(100);
+	
+	==> 고정길이 배열
+	==> 가변길이 배열
+		ArrayList 객체
+		
+		객체 생성
+		ArrayList arr = new ArrayList();
+		
+		요소 값 추가
+		arr.add(값);
+		
+		요소 값 사용
+		arr.get(인덱스);
+		
+		
+	페이징 처리 1. 원하는 정보 가져오기
+				2. 하단 블럭 구성
+				3. 기존 페이지 정보 넘기기
+				
+	BoardBean bb; - 컴파일 에러 발생 (객체 생성되지 않은 상태로 인식)	
+	BoardBean bb = null; - NULL 값 예외 발생 (객체가 생성된 상태)
+		
+		
+	* 답글 처리 로직
+	
+	re_ref 	: 답글의 그룹번호 (원 글과 답글이 모두 동일한 값을 가지도록 하는 값)
+			
+			일반글 - 글번호와 같음 (bno == re_ref)
+			답글 - 원글의 ref값을 저장
+		
+		
+	re_lev	: 답글의 레벨값 (답글을 들여쓰기 하는 값)
+	
+			일반글 - 항상 0 초기화
+			답글 - 원글의 lev + 1 저장
+			
+			
+	re_seq	: 답글의 순서값 (답글을 정렬할때 순서값)
+	
+			일반글 - 항상 0 초기화
+			답글 - 원글의 seq + 1 저장
+			
+			
+	------------------------------------------------------
+	bno		subject			re_ref		re_lev		re_seq
+	------------------------------------------------------
+	1		일반1			1			0			0
+	2		일반2			2			0			0
+	3		일반3			3			0			0
+	4		>답글1-1		1			1			1
+	5		>답글3-1		3			1			1
+	6		일반4			6			0			0
+	7		>>답글1-1-1		1			2			2
+	8		>>>답글1-1-1-1	1			3			3
+	9		>>답글3-1-1		3			2			2
+	10		>답글4-1		6			1			1
+	
+	order by bno desc
+	=> order by re_ref desc(내림), re_seq asc(오름)
+	=> re_seq 값이 기존의 값보다 큰값이 존재하는 경우 기존의 seq값 + 1 계산
+	
+	------------------------------------------------------
+	bno		subject			re_ref		re_lev		re_seq
+	------------------------------------------------------
+	3		일반3			3			0			0
+	2		일반2			2			0			0
+	5		>답글2-1		2			1			1
+	6		>>답글2-1-1		2			2			2
+	1		일반1			1			0			0
+	9		>답글1-4		1			1			1
+	8		>답글1-3		1			1			2(1+1)
+	10		>>답글1-3-1		1			2			3(2+1)
+	7		>답글1-2		1			1			4(3+1)
+	4		>답글1-1		1			1			5(4+1)	
+	
+	
+	
+	MultipartRequest multi = new MultipartRequest(
+				request, (폼태그 전달정보)
+				realPath, (실제 파일이 저장되는 경로)
+				maxSize, (파일크기 제한)
+				"UTF-8", (한글 처리 인코딩)
+				new DefaultFileRenamePolicy() (파일 이름의 중복을 처리하는 객체)
+				);
+			=> 객체 생성 == 파일 업로드
+			
+			
+	* 서블릿(Servlet)		
+		JSP(Java Server Page) : 클라이언트의 요청을 처리해서 동적인 데이터(DB)를
+								사용 가능 하도록 만들어주는 기술								
+		Servlet(Server Side Applet) : 자바 코드로 동적데이터를 처리하는 기술
+	
+		JSP <=> Servlet(java) <=> class
+			[실행]			[컴파일]
+			
+	== 서블릿의 경우는 코드하나 공백하나 변경할때마다 컴파일이 필요,
+		JSP(HTML+java)는 매번 컴파일이 필요하지는 않음
+		
+		
+	* 서블릿 사용 규칙
+	1) javax.servlet.Servlet 인터페이스를 구현
+	2) 1)을 구현하기 힘든경우, javax.servlet.http.HttpServlet 클래스를 상속 사용 - 일반적인 사용
+	3) doGet(), doPost() 메서드를 선언(오버라이딩)	
+		(javax.servlet.http.HttpServletRequest,
+		javax.servlet.http.HttpServletResponse 전달인자 필수로 구현)
+	4) java.io.IOException, javax.servlet.ServletException을 통한 예외처리(예외 던지기)
+	5) 배포서술자(web.xml)를 사용해서 서블릿과 주소(url)을 매핑(서블릿 3.0 이상은 어노테이션 지원)
+	
+	
+	서블릿 클래스 정보 저장
+	<servlet>
+  		<servlet-name> 서블릿 객체이름 </servlet-name>
+  		<servlet-class> 서블릿 클래스의 위치 </servlet-class>
+  	</servlet>
+  	
+  	서블릿 클래스와 URL주소를 매핑
+  	<servlet-mapping>
+  		<servlet-name> 서블릿 객체이름 </servlet-name>
+  		<url-pattern> URL 주소 </url-pattern>
+  	</servlet-mapping>
+  	
+  	
+  	* JSP -> Servlet 변경 (자동변경)
+  	- JSP 페이지를 실행할때(컴파일) Servlet으로 변경
+  	- JSP 스크립틀릿(<% %>) 코드는 Servlet-service() 메서드 안에 작성
+  	- JSP 선언문 (<%! %>) 코드는 Servlet 내부에 멤버(변수, 메서드)의 형태로 작성
+  	- JSP 표현식 (<%= %>) 코드는 Servlet-service() 메서드, out.println()로 변경
+  	- HTML 코드는 Servlet-service() 메서드, out.write()로 변경
+  	
+  	
+  	* EL(Expression Language) : 표현 언어
+  	 => 
+  	 	사용목적
+  	 	- 간편한 출력
+  	 	- out.println(), <%= %>을 대신하기위한 표현
+  	 	
+  	 	사용방법
+  	 	 ${변수 }	${식(연산) }	${메서드 호출(단, 리턴이 있는 경우만)}
+  	 	 
+  	 	- EL 내장객체 (p513)
+  	 	 pageScope / requestScope / sessionScope / applicationScope
+  	 	 param / paramValues
+  	 	 header / headerValues
+  	 	 cookie
+  	 	 initParam
+  	 	 pageContext
+  	 	
+  	 	- EL 연산자 (p516~517)
+  	 	 산술연산자( + - * / % )
+  	 	 논리연산자( && || ! )
+  	 	 비교연산자( == != > < >= <= )
+  	 	 ( . [] () X?a:b empty )
+  	 	 
+  	 	- EL 표현식 특징
+  	 	 JSP 반복문 사용 불가능 => JSTL-foreach 구문으로 대체
+  	
+  	
+  	* JSTL(JSP Standard Tag Library) (519 ~ 526)  	
+  	 => 자카르타(아파치) 제공하는 자주 사용되는 태그를 기능별로 모아놓은 라이브러리
+  	 
+  	 - CORE 라이브러리 : 기본적인 기능
+  	 			변수생성, 출력, 조건문, 반복문...
+  	 - Formmatting 라이브러리 : 형태를 처리하는 기능(숫자, 날짜시간) 
+  	
+  	
+  	
+	

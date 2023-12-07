@@ -1,0 +1,203 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:44), pid=4204, tid=4124
+#
+# JRE version:  (17.0.3+7) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.3+7, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages com.itwillbs.ex.MainClass
+
+Host: 11th Gen Intel(R) Core(TM) i7-11700 @ 2.50GHz, 16 cores, 15G,  Windows 11 , 64 bit Build 22621 (10.0.22621.2070)
+Time: Fri Sep  1 10:54:16 2023  Windows 11 , 64 bit Build 22621 (10.0.22621.2070) elapsed time: 0.033998 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001b64ee3bfc0):  JavaThread "Unknown thread" [_thread_in_vm, id=4124, stack(0x0000000c56200000,0x0000000c56300000)]
+
+Stack: [0x0000000c56200000,0x0000000c56300000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x675efa]
+V  [jvm.dll+0x830a24]
+V  [jvm.dll+0x8321ce]
+V  [jvm.dll+0x832833]
+V  [jvm.dll+0x2454b5]
+V  [jvm.dll+0xa6393]
+V  [jvm.dll+0x2d6ec4]
+V  [jvm.dll+0x80261c]
+V  [jvm.dll+0x3693b1]
+V  [jvm.dll+0x7e1aac]
+V  [jvm.dll+0x3ebd8f]
+V  [jvm.dll+0x3ed911]
+C  [jli.dll+0x5277]
+C  [ucrtbase.dll+0x29363]
+C  [KERNEL32.DLL+0x126ad]
+C  [ntdll.dll+0x5aa68]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffef9016e98, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000001b64ee3bfc0 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=4124, stack(0x0000000c56200000,0x0000000c56300000)]
+
+Threads with active compile tasks:
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000000000000, size: 0 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (1 events):
+Event: 0.004 Loaded shared library D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff729800000 - 0x00007ff72980e000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\javaw.exe
+0x00007fff3e2b0000 - 0x00007fff3e4c4000 	C:\windows\SYSTEM32\ntdll.dll
+0x00007fff3c0d0000 - 0x00007fff3c194000 	C:\windows\System32\KERNEL32.DLL
+0x00007fff3b7e0000 - 0x00007fff3bb84000 	C:\windows\System32\KERNELBASE.dll
+0x00007fff3b690000 - 0x00007fff3b7a1000 	C:\windows\System32\ucrtbase.dll
+0x00007fff38630000 - 0x00007fff38648000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\jli.dll
+0x00007fff3e0a0000 - 0x00007fff3e24a000 	C:\windows\System32\USER32.dll
+0x00007fff3b7b0000 - 0x00007fff3b7d6000 	C:\windows\System32\win32u.dll
+0x00007fff3c9c0000 - 0x00007fff3c9e9000 	C:\windows\System32\GDI32.dll
+0x00007fff38610000 - 0x00007fff38629000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\VCRUNTIME140.dll
+0x00007fff1c140000 - 0x00007fff1c3cf000 	C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.2070_none_2713e6537381f706\COMCTL32.dll
+0x00007fff3bc50000 - 0x00007fff3bd69000 	C:\windows\System32\gdi32full.dll
+0x00007fff3bfd0000 - 0x00007fff3c06a000 	C:\windows\System32\msvcp_win.dll
+0x00007fff3c720000 - 0x00007fff3c7c7000 	C:\windows\System32\msvcrt.dll
+0x00007fff3c530000 - 0x00007fff3c561000 	C:\windows\System32\IMM32.DLL
+0x00007fff38600000 - 0x00007fff3860c000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\vcruntime140_1.dll
+0x00007fff383b0000 - 0x00007fff38441000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\msvcp140.dll
+0x00007ffef8500000 - 0x00007ffef9148000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\server\jvm.dll
+0x00007fff3dbf0000 - 0x00007fff3dca0000 	C:\windows\System32\ADVAPI32.dll
+0x00007fff3dd60000 - 0x00007fff3de06000 	C:\windows\System32\sechost.dll
+0x00007fff3cbc0000 - 0x00007fff3ccd7000 	C:\windows\System32\RPCRT4.dll
+0x00007fff3dbe0000 - 0x00007fff3dbe8000 	C:\windows\System32\PSAPI.DLL
+0x00007fff38a40000 - 0x00007fff38a49000 	C:\windows\SYSTEM32\WSOCK32.dll
+0x00007fff32cf0000 - 0x00007fff32d24000 	C:\windows\SYSTEM32\WINMM.dll
+0x00007fff362b0000 - 0x00007fff362ba000 	C:\windows\SYSTEM32\VERSION.dll
+0x00007fff3def0000 - 0x00007fff3df61000 	C:\windows\System32\WS2_32.dll
+0x00007fff3a730000 - 0x00007fff3a748000 	C:\windows\SYSTEM32\kernel.appcore.dll
+0x00007fff38a30000 - 0x00007fff38a3a000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\jimage.dll
+0x00007fff31ba0000 - 0x00007fff31dce000 	C:\windows\SYSTEM32\DBGHELP.DLL
+0x00007fff3c1a0000 - 0x00007fff3c52a000 	C:\windows\System32\combase.dll
+0x00007fff3de10000 - 0x00007fff3dee7000 	C:\windows\System32\OLEAUT32.dll
+0x00007fff30e90000 - 0x00007fff30ec2000 	C:\windows\SYSTEM32\dbgcore.DLL
+0x00007fff3bd70000 - 0x00007fff3bdea000 	C:\windows\System32\bcryptPrimitives.dll
+0x00007fff389a0000 - 0x00007fff389c5000 	D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin;C:\windows\SYSTEM32;C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.2070_none_2713e6537381f706;D:\eclipse_jsp\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre\bin\server
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: com.itwillbs.ex.MainClass
+java_class_path (initial): D:\workspace_jsp7\JSP7\build\classes;D:\workspace_jsp7\JSP7\src\main\webapp\WEB-INF\lib\mysql-connector-j-8.1.0.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\annotations-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-ant.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-ha.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-ssi.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-storeconfig.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina-tribes.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\catalina.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\ecj-4.20.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\el-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper-el.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jasper.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jaspic-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\jsp-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\servlet-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-api.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-coyote.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-dbcp.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-cs.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-de.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-es.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-fr.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-ja.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-ko.jar;C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib\tomcat-i18n-pt-BR.jar;C:\Program Files\Apache Software F
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 13                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 264241152                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4213178368                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7602480                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122027880                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122027880                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 4213178368                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=D:/eclipse_jsp//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416/jre/bin/server;D:/eclipse_jsp//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416/jre/bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.15-1\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\ITWILL\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Users\ITWILL\AppData\Local\Programs\Microsoft VS Code\bin;D:\eclipse_jsp;
+USERNAME=ITWILL
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 167 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.2070)
+OS uptime: 4 days 0:09 hours
+
+CPU: total 16 (initial active 16) (8 cores per cpu, 2 threads per core) family 6 model 167 stepping 1 microcode 0x3c, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, sha, fma, vzeroupper, avx512_vpopcntdq, avx512_vpclmulqdq, avx512_vaes, avx512_vnni, clflush, clflushopt, avx512_vbmi2, avx512_vbmi
+
+Memory: 4k page, system-wide physical 16071M (3325M free)
+TotalPageFile size 44630M (AvailPageFile size 0M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 22M, peak: 22M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.3+7) for windows-amd64 JRE (17.0.3+7), built on Apr 19 2022 16:55:35 by "" with MS VC++ 16.7 (VS2019)
+
+END.

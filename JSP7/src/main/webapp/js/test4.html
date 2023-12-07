@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test4.html</h1>
+    <h2>반복문</h2>
+    <h3>for</h3>
+    <script>
+        // var iNumstart = 0;
+        // var iNumfinish = 0;
+
+        // iNumstart = prompt("시작 범위를 입력하세요!");
+        // iNumfinish = prompt("종료 범위를 입력하세요!");
+
+        // // for(var i = iNumstart; i <= iNumfinish; i++){
+        // //     document.writeln(i);
+        // // }
+        // // for(var i = iNumstart; i >= iNumfinish; i--){
+        // //     document.writeln(i);
+        // // }
+        // for(var i = iNumstart; i <= iNumfinish; i++){
+        //     // document.writeln(i % 2 != 0 ? i : "");
+        //     document.writeln(i);
+        //     // i++;
+        // }
+
+        // var iNum = 0;
+        // iNum = prompt("단을 입력하세요!");
+
+        // for(var i = 2; i<=9; i++){
+        //     document.write(iNum+" * "+i+" = "+(iNum*i)+"<br>");
+        // }        
+
+        // var iNumlength = 0;
+        // var iSum = 0;
+        // var iFactorial = 1;
+
+        // iNumlength = prompt("범위를 입력하세요!");
+
+        // for(var i = 1; i<=iNumlength; i++){
+        //     iSum += i;
+        // }
+        
+        // for(var i = 1; i<=iNumlength; i++){
+        //     iFactorial *= i;
+        // }
+
+        // document.write(iNumlength+"까지의 모든 정수의 합 : "+iSum+"<br>");
+        // document.write(iNumlength+"! : "+iFactorial+"<br>");
+
+    </script>
+    <h3>while</h3>
+    <script>
+        // var i = 1;
+        // var iSum = 0;
+        // var iNumlength = prompt("범위를 입력하세요!");
+
+        // while(iNumlenth >= 1){
+        //     document.write(iNumlenth+"<br>");
+        //     iNumlenth--;
+        // }  
+       
+        // while(i < iNumlength){
+        //     iSum += i;
+        //     i++;
+        // }  
+        // document.write(iSum+"<br>");
+        
+    </script>
+    <h3>do-while</h3>
+    <script>
+        // var i = 1;
+        // do{
+        //     document.write( i + " ");
+        //     i++;
+        // }while(i<=10);
+        
+        // function testf(num,string){
+        //     var sFont = "";
+        //     var sTest = "<";
+        //     var sTest2 = ">";
+        //     var sTest3 = "/";
+
+        //     switch(num){
+        //         case 1: 
+        //         sFont = "b";
+        //         break;
+        //         case 2: 
+        //         sFont = "i";
+        //         break;
+        //         case 3: 
+        //         sFont = "mark";
+        //         break;
+        //         default:
+        //     }
+        //     return sTest + sFont + sTest2 + string + sTest + sTest3 + sFont + sTest2;  
+        // }
+        // document.write(testf(1,"coffee"));
+
+        var iOddsum=0, iEvensum=0;
+
+        for(var i=0; i<=10; i++){
+            i%2==0 ? iEvensum+=i : iOddsum+=i;
+        }
+        document.write("홀수의 합 : "+iOddsum+"<br>짝수의 합 : "+iEvensum+"<br><hr>");
+
+        // for(var j = 9; j < 10; j++){
+        //     for(var i = 0; i <= 60; i++){
+        //         i == 60 ? document.write((j+1) + "시" + "0분<br>") : document.write(j + "시" + i + "분<br>");
+        //     }
+        // }
+
+        // for(var j = 2; j<10; j++){
+        //     document.write("["+ j + "단]<br>");
+        //     for(var i = 1; i<10; i++){
+        //         document.write(j + " * " + i + " = " + (j * i) + "<br>");
+        //         if(i == 9)document.write("<br>");
+        //     }
+        // }
+    </script>
+    
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+        </tr>
+    </table>
+    <script>
+        var num = 1;
+        var tag = "<table border='1'>";
+        
+        for(var r = 1; r <= 5; r++){
+            tag += "<tr>";
+            for(var c = 1; c <= 3; c++){
+                tag += "<td>" + num + "</td>";
+                num++;             
+            }
+            tag += "</tr>";
+        }
+        tag += "</table>";
+        document.write(tag + "<br><hr>");
+    </script>
+</body>
+</html>

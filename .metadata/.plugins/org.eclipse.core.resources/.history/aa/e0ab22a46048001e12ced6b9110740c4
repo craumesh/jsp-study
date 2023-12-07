@@ -1,0 +1,15 @@
+package com.itwillbs.ex;
+import java.util.*;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> list = new ArrayList<>();
+		String name = "홍길동";
+		int kor = 100, eng = 50, math = 70;
+		list.toString();
+		
+	}
+
+}

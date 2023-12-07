@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// ajax 사용해서 정보를 전달하고 처리된 결과를 전달받기
+		$.ajax({
+			url : "ajaxString2.jsp",
+			data : {name : "HELLO",
+					age : 30},
+			success : function(response){
+				alert(" ajax 성공!");
+				$('body').append(response);
+			}
+		});
+	  
+	  
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

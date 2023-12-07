@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+/* 		$.ajax({
+			url : "이동할 페이지(처리할 페이지)",
+			type : "전송방식(GET/POST)",
+			data : "이동 페이지로 전송할 데이터(Object/JSON 타입)",
+			dataType : "요청한 데이터타입(html,xml,json,text)",
+			contentType : "전송할때 데이터타입(기본값 : application/x-www-form-urlencoded)",
+			success : function(response){
+				"비동기 방식 처리가 성공한 경우 실행!"
+			},
+			error : function(){
+				"비동기 방식 처리가 실패한 경우 실행!"
+			},
+			complete : function(){
+				"비동기 방식 처리가 완료된 후 실행!(성공or실패)"
+			}
+		}); */
+		
+		// ajax 사용해서 ajaxString1.jsp 페이지에 다녀오기
+		$.ajax({
+			url : "ajaxString1.jsp",
+			success : function(response){
+				alert(response);
+				$('body').append(response);
+			},
+			error : function(response){
+				alert(response);
+			}
+		})
+	});
+</script>
+</head>
+<body>
+	<h1>ajax1.html</h1>
+	
+	<h2> AJAX (Asynchronous JavaScript and Xml) : 비동기방식의 js와 xml </h2>
+	<!--
+		동기방식 : 서버와 클라이언트가 동일하다 (순차적으로 처리한다)
+		비동기방식 : 서버와 클라이언트가 다르다 (비순차적으로 처리한다)
+	-->
+	
+	
+</body>
+</html>

@@ -1,0 +1,21 @@
+package com.itwillbs.ex;
+
+/*
+ * 학생의 점수 kor, eng, math 정보 저장하는 객체
+ */
+
+public class Student {
+	
+	private int kor = 0;
+	private int eng = 0;
+	private int math = 0;
+	
+	public Student {
+		
+	}
+
+	// alt shift s + r
+	
+	
+
+}

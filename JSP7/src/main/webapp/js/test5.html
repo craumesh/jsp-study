@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>/js/test5.html</h1>
+    <h2>함수</h2>
+    <script>
+        function info_ITWILL(iIndex){
+            switch(iIndex){
+                case 0: document.write("안녕하세요<br>");
+                break;
+                case 1: document.write("아이티윌 입니다!<br>");
+                break;
+                case 2: document.write("접수는 왼쪽입니다<br>");
+                break;
+            }
+        }
+        for(var i = 0; i < 3; i++){
+            info_ITWILL(i);
+        }
+
+        // 익명함수
+        // var ex = function(){}
+        // 변수명()으로 호출, 해당 변수를 참조변수라고 부름
+
+        var sayMyName = function(sName,iNum){
+            for(var i = 0; i < iNum; i++){
+                document.write(sName + "<br>");
+            }
+        }
+        sayMyName("아이티윌",2);
+
+        function Sum(iNum){
+            var iSum = 0;
+            for(var i = 1; i <= iNum; i++){
+                iSum += i;
+            }
+            return iSum;
+        }
+        var iValue1 = 10;
+        var iValue2 = 20;
+        var iValue3 = -20;
+
+        document.write("1부터 " + iValue1 + "까지의 합 : " + Sum(iValue1) + "<br>");
+
+        function twoSum(iNum1,iNum2){
+            return iNum1 + iNum2;
+        }
+        document.write(iValue1 + " 과 " + iValue2 + "의 합 : " + twoSum(iValue1,iValue2) + "<br>");
+
+        function twoMax(iNum1,iNum2){
+            return iNum1 < iNum2 ? iNum2 : iNum1;
+        }
+        document.write(iValue1 + " 과 " + iValue2 + "중 더 큰 수 : " + twoMax(iValue1,iValue2) + "<br>");
+
+        function exABS(iNum1){
+            return iNum1 > 0 ? iNum1 : -iNum1
+        }
+        document.write(iValue1 + "의 절대값 : " + exABS(iValue1) + "<br>")
+        document.write(iValue3 + "의 절대값 : " + exABS(iValue3) + "<br>")
+
+        function numCalc(iNum1,iNum2,sOper){
+            switch(sOper){
+                case "+" : return iNum1 + iNum2;
+                case "-" : return iNum1 - iNum2;
+                case "*" : return iNum1 * iNum2;
+                case "/" : return iNum1 / iNum2;
+                case "%" : return iNum1 % iNum2;
+                default:
+            }
+        }
+        document.write(iValue1 + " + " + iValue2 + " = " + numCalc(iValue1, iValue2, "+") + "<br>")
+        document.write(iValue1 + " - " + iValue2 + " = " + numCalc(iValue1, iValue2, "-") + "<br>")
+        document.write(iValue1 + " * " + iValue2 + " = " + numCalc(iValue1, iValue2, "*") + "<br>")
+        document.write(iValue1 + " / " + iValue2 + " = " + numCalc(iValue1, iValue2, "/") + "<br>")
+        document.write(iValue1 + " % " + iValue2 + " = " + numCalc(iValue1, iValue2, "%") + "<br>")
+        document.write("<hr><br>");
+
+        // for(var j = 2; j < 10; j++){
+        //     document.write("[" + j + "단] ");
+        //     for(var i = 1; i < 10; i++){
+        //         document.write(j + " * " + i + " = " + (j * i) + "  ");
+        //         if(i == 9){document.write("<br>");}
+        //     }
+        // }
+
+        var tag = "<table border='1'>";
+        
+        for(var r = 2; r <= 9; r++){
+            tag += "<tr>" + "<th>" + "[" + r + "단]" + "</th>";
+            for(var c = 1; c <= 9; c++){
+                tag += "<td>"+ r + " * " + c + " = " + (r * c) + "</td>";           
+            }
+            tag += "</tr>";
+        }
+        tag += "</table>";
+        document.write(tag + "<br><hr>");
+
+        var num = 100; // 전역 변수
+        function ex1(){
+           num = 200; // 로컬 변수
+           return num;
+        }
+        document.writeln(num);
+        num = ex1();
+        document.writeln(num);
+    </script>
+
+    <h2>변수</h2>
+    <p> * 전역변수 : 모든 스코프에서 사용 가능 한 변수<br>
+        (함수 밖에서 선언 후 사용, 함수 안에서 사용할 경우 var 타입을 제거해야함)<br>
+        * 지역변수 : 특정 스코프에서만 사용 가능 한 변수<br><br>
+    </p>
+
+    <script>
+        var a = 100;
+        function TEST(){
+            var a = 200; // X
+            a = 200; // O
+        }
+    </script>
+
+    <h3>호이스팅 : '끌어올린다'라는 개념으로 사용됨</h3>
+    <p> 자바 스크립트는 인터프리터(순차적 해석)를 사용해서 코드를 해석<br>
+        함수를 만나면 함수 전체를 스캔<br>
+        함수에 선언이 존재할 경우 별도로 저장<br>
+    </p>
+
+    <script>
+        var x = 10; // 선언
+        x = 20; // 초기화
+        var x = 20; // 재선언
+
+        function print(){
+            y = 5;
+            document.write("x = " + x + "<br>");
+            document.write("y = " + y + "<br>");
+            //document.write("z = " + z + "<br>");
+            
+            var y;
+        }
+        print();
+    </script>
+
+    <h3>let 타입</h3>
+    <p> * 호이스팅, 재선언 불가 <br>
+    </p>
+
+    <script>
+        let letmein;
+        function a(){
+            letmein = 10;
+            document.writeln(letmein);
+            let tt = 20;
+        }
+        a();
+        document.writeln(tt);
+    </script>
+
+    <h3>const 타입</h3>
+    <p> * 호이스팅, 재선언 불가 <br>
+        * 선언 시 초기화 필수 <br>
+        * 선언된 변수 재사용 불가 <br>
+    </p>
+
+    <script>
+        const concon = 10;
+        function a(){
+            concon = 20;
+            document.writeln(concon);
+            document.writeln(tt);
+            const tt = 30;
+        }
+        a();
+        document.writeln(tt);
+    </script>
+
+<h3>var 타입</h3>
+<p> * 호이스팅, 재사용 가능 <br>
+    * 재선언 가능하나 사용 하지 말것 <br>
+    * 어지간하면 쓰지말것, 전역 변수에만 사용 권장 <br>
+</p>
+
+<script>
+// 익명 함수
+var tmp = function(){
+}
+tmp();
+
+// 즉시 실행 함수
+(function(){
+}());
+
+// 화살표 함수(람다 표현식)
+// const st = function(){
+//     return "Hello";
+// }
+//
+//const st = () => {return "Hello";}
+const st = () => "Hello";
+document.writeln(st());
+</script>
+
+<script>
+    // 보조 제어문
+    /*
+    1. break; 가장 가까운 반복문 하나 탈출
+    2. continue; 특정 조건을 무시하고 다음 반복문 실행
+    */
+
+   let Quiz = Math.floor(Math.random()*100);
+   let iCount = 0;
+
+   while(true){
+        let iNum = prompt("0~100 정수 입력");        
+        if(iNum <= 100 && iNum >= 0){
+            iCount++;
+            if(iNum < Quiz){
+                alert("UP!");
+            }else if(iNum > Quiz){
+                alert("Down!");
+            }else{
+                alert(iCount + "번 째에 성공하셨습니다!");
+                break;
+            }
+        }
+   }
+</script>    
+</body>
+</html>

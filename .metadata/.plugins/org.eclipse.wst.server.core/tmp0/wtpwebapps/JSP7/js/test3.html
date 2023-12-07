@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test3.html</h1>
+    <h2>제어문(조건문, 선택문, 반복문)</h2>
+    <h3>if</h3>
+    <script>
+        var iNum = 100;
+        if(iNum > 50){
+            document.write("50보다 큼!<br>");
+        }else{
+            document.write("50보다 작음!<br>");
+        }
+
+        //document.write(iNumber > 0 ? "양수!<br>" : "음수!<br>");
+        //document.write(iNumber % 2 == 0 ? confirm("짝수!") :  confirm("홀수!"));
+
+        //document.write(confirm("퇴실 찍음?") ? "잘했어요" : "찍으세요" );
+
+        //var iMonth = prompt("월을 입력하세요!");
+        //(iMonth >= 3 && iMonth <= 5) ? alert(iMonth + "월은 봄입니다!") : (iMonth >= 6 && iMonth <= 8) ? alert(iMonth + "월은 여름입니다!") : (iMonth >= 9 && iMonth <= 11) ? alert(iMonth + "월은 가을입니다!") : (iMonth == 12 || iMonth > 0 && iMonth <= 2) ? alert(iMonth + "월은 겨울입니다!") : alert("지구인이 아니구나?");
+        
+        // while(1){
+        // var sId = prompt("아이디를 입력하세요!");
+        // var sPw
+        // sId == "itwill" ? sPw = prompt("비밀번호를 입력하세요!") == "itwill" ? alert("로그인 되셨습니다!") : alert("비밀번호를 다시 확인해주세요!") : alert("아이디가 틀렸습니다!");
+        // }
+        
+        // while(1){
+        //     var sUserid = "itwill";
+        //     var sUserpw = "itwill";
+        //     var sInputid = prompt("아이디를 입력하세요!");
+        //     var sInputpw = prompt("비밀번호를 입력하세요!");
+            
+        //     if(sInputid == sUserid){
+        //         if(sInputpw == sUserpw){
+        //             alert("로그인 되셨습니다!");
+        //             break;
+        //         }else{
+        //             alert("비밀번호를 다시 확인해주세요!");
+        //         }
+        //     }else{
+        //         alert("아이디를 다시 확인해주세요!");
+        //     }
+        // }
+    </script>
+    <h3>switch</h3>
+    <script>
+        // var iInputscore = 0;
+        // var bLoopswitch = true;
+
+        // while(1){
+        //     iInputscore = prompt("번호를 입력하세요!");
+            
+        //     if(iInputscore == 0){
+        //         break;
+        //     }else if(iInputscore > 100 || iInputscore < 1){
+        //         alert("1부터 100 사이의 숫자를 입력해 주세요!");
+        //     }else if(iInputscore >= 90){
+        //         alert("A!");
+        //     }else if(iInputscore >= 80){
+        //         alert("B!");
+        //     }else if(iInputscore >= 70){
+        //         alert("C!");
+        //     }else if(iInputscore >= 60){
+        //         alert("D!");
+        //     }else{
+        //         alert("F!");                
+        //     }            
+        // }
+
+        // while(bLoopswitch){
+        //     iInputscore = prompt("번호를 입력하세요!");
+        //     sGrade = '';
+        
+        //     switch(true){
+        //         case iInputscore == 0 : 
+        //             bLoopswitch = false;
+        //             break;
+        //         case iInputscore > 100 || iInputscore < 1 : 
+        //             alert("1부터 100 사이의 숫자를 입력해주세요!");
+        //             break;
+        //         case iInputscore >= 90 :
+        //             sGrade = "A!";
+        //             break;
+        //         case iInputscore >= 80 : 
+        //             sGrade = "B!";
+        //             break;
+        //         case iInputscore >= 70 : 
+        //             sGrade = "C!";
+        //             break;
+        //         case iInputscore >= 60 : 
+        //             sGrade = "D!";
+        //             break;
+        //         default:
+        //             sGrade = "F!";
+        //     }
+        //     alert(sGrade);
+        // }
+
+        var sInputdomain = prompt("도메인을 입력하세요!");
+        var sNaver = "https://www.naver.com"
+        var sGoogle = "https://www.google.com"
+        
+        var sDomain = [sNaver,sGoogle];
+        var iNumdomain = 0;
+
+        switch(true){
+            case sInputdomain == "네이버" : 
+            case sInputdomain == "www.naver.com" :
+            case sInputdomain == "naver" : 
+            iNumdomain = 1;
+            break;
+            case sInputdomain == "구글" : 
+            case sInputdomain == "google" : 
+            iNumdomain = 2;
+            break;
+            default : 
+            iNumdomain = 0;        
+        }
+
+        switch(iNumdomain){
+            case 1: 
+            location.href = sNaver;
+            break;
+            case 2: 
+            location.href = sGoogle;
+            break;
+            default: 
+            alert("지원하지 않는 도메인 입니다!");
+        }     
+        
+    </script>
+</body>
+</html>
